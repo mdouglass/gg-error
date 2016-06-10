@@ -1,0 +1,26 @@
+{
+  "name": "gg-error",
+  "version": "1.0.0",
+  "description": "Grayscale Games Base Error Class",
+  "license": "ISC",
+  "author": "Matthew Douglass <matthew@douglass.email>",
+  "homepage": "https://github.com/mdouglass/gg-error",
+  "repository": "mdouglass/gg-error",
+  "bugs": "https://github.com/mdouglass/gg-error/issues",
+  "main": "error.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha",
+    "watch": "mocha -w -R min",
+    "prepublish": "npm run lint && npm run test"
+  },
+  "dependencies": {
+    "colors": "^1.1.2"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "eslint": "2.10.2",
+    "eslint-config-gg": "1.0.2",
+    "mocha": "2.5.1"
+  }
+}
