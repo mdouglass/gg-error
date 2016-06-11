@@ -70,6 +70,15 @@ describe('BaseError', () => {
     }
   })
 
+  it('stack trace includes the code and properties on line 2', () => {
+    try {
+      class CustomError extends BaseError { }
+      throw new CustomError('code', 'message', { foo: 'bar' })
+    } catch (e) {
+      expect(e.stack).matches(/^CustomError: message\n {4}code: {"foo":"bar"}/)
+    }
+  })
+
   it('is identified as an error by util#isError', () => {
     try {
       throw new BaseError('code', 'message')

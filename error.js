@@ -13,6 +13,7 @@ class BaseError extends Error {
     this.props = args.shift()
 
     Error.captureStackTrace(this, this.constructor)
+    this.stack = this.stack.replace('\n', `\n    ${this.code}: ${JSON.stringify(this.props || {})}\n`)
 
     if (this.cause) {
       const oldStack = Reflect.getOwnPropertyDescriptor(this, 'stack')
