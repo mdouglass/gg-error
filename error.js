@@ -12,6 +12,8 @@ class BaseError extends Error {
     this.message = args.shift()
     this.props = args.shift()
 
+    Error.captureStackTrace(this, this.constructor)
+
     if (this.cause) {
       const oldStack = Reflect.getOwnPropertyDescriptor(this, 'stack')
       Reflect.defineProperty(this, 'stack', {

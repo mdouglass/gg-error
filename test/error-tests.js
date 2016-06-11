@@ -30,7 +30,7 @@ describe('BaseError', () => {
     }
   })
 
-  it('if optional Error is passed to the constructor, the stack track is modified to reflect it', () => {
+  it('if optional Error is passed to the constructor, the stack trace is modified to reflect it', () => {
     const cause = new Error('root message')
     try {
       throw new BaseError(cause, 'cause-code', 'cause-message')
@@ -50,6 +50,23 @@ describe('BaseError', () => {
       expect(e.message).equals('props-message')
       expect(e.cause).equals(undefined)
       expect(e.props).equals(props)
+    }
+  })
+
+  it('stack traces reference the throwing point, not BaseError constructor', () => {
+    try {
+      throw new BaseError('code', 'message')
+    } catch (e) {
+      expect(e.stack).not.matches(/at BaseError/)
+    }
+  })
+
+  it('stack trace references the throwing point, not a derived constructor', () => {
+    try {
+      class CustomError extends BaseError { }
+      throw new CustomError('code', 'message')
+    } catch (e) {
+      expect(e.stack).not.matches(/at CustomError/)
     }
   })
 
