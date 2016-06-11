@@ -1,6 +1,6 @@
 {
   "name": "gg-error",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Grayscale Games Base Error Class",
   "license": "ISC",
   "author": "Matthew Douglass <matthew@douglass.email>",
@@ -14,8 +14,7 @@
     "watch": "mocha -w -R min",
     "prepublish": "npm run lint && npm run test"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "3.5.0",
     "eslint": "2.12.0",
